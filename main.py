@@ -1,5 +1,7 @@
-# Futurelearn advenure game
+# Futurelearn - advenure game
+
 from room import Room
+from character import Enemy, Character, Friend
 
 # Kitchen
 kitchen = Room("Kitchen") # instantiate Kitchen object
@@ -20,12 +22,58 @@ dining_hall.link_room(kitchen, "north")
 dining_hall.link_room(ballroom, "west")
 ballroom.link_room(dining_hall, "east")
 
+# set Enemy
+dave = Enemy("Dave", "A smelly zombie") # initialize enemy
+dave.describe()
+dave.set_conversation("Brrlgrh... rgrhl... brains...") # set auto-response
+dave.set_weakness("cheese")
+dave.talk() # trigger conversation
+dining_hall.set_character(dave) # place enemy
+
+# set Friend
+catrina = Friend("Catarina", "A friendly skeleton") # initialize Friend
+carina.describe()
+catrina.set_conversation("Why hello there...") # set auto-response
+catrina.talk() # trigger conversation
+ballroom.set_character(catrina) # place friend
+
 # player location
 current_room = kitchen
-while True:
-    print('\n')
+dead = False
+
+while dead == False:
+    print("\n")
     current_room.get_details()
+    
+    inhabitant = current_room.get_character()
+    if inhabitant is not None:
+        inhabitant.describe()
+    
     command = input("> ")
-    current_room = current_room.move(command)
-
-
+    
+    if command in ["north", "south", "east", "west"]: # check whether direction was typed
+        current_room = current_room.move(command)
+    elif command == "talk":
+        if inhabitant is not None:
+            inhabitant.talk()
+    elif command == "fight":
+        if inhabitamt == None or isinstance(inhabitant, Enemy):
+            print("There is no one here to fight with")
+        else:
+            print("What will you fight with?")
+            fight_with = input()
+            if inhabitant.fight(fight_with) == True:
+                print("Hooray, you won the fight!")
+                current_room.set_character(None)
+            else:
+                print("Oh dear, you lost the fight.")
+                print("That's the end of the game!")
+                dead = True
+    elif command == "hug":
+        if inhabitant == None:
+            print("There is no one here to hug :(")
+        else:
+            if isinstance(inhabitant, Enemy):
+                print("I wouldn't do that if I were you...")
+            else:
+                inhabitant.hug()

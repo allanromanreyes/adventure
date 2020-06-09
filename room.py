@@ -1,11 +1,11 @@
 # Futurelearn - adventure game
-# Room class
 
 class Room():
     def __init__(self, room_name): # add a constructor
         self.name = room_name
         self.description = None
         self.linked_rooms = {}
+        self.character = None
         
     def set_description(self, room_description):
         self.description = room_description
@@ -37,3 +37,10 @@ class Room():
         else:
             print("You can't go that way. You are likely to be eaten by a Grue.")
             return self
+    
+    def set_character(character):
+        character.describe = char_description
+        
+    def get_character(char_name):
+        return char_name
+        
