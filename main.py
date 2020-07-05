@@ -31,8 +31,8 @@ dave.talk() # trigger conversation
 dining_hall.set_character(dave) # place enemy
 
 # set Friend
-catrina = Friend("Catarina", "A friendly skeleton") # initialize Friend
-carina.describe()
+catrina = Friend("Catrina", "A friendly skeleton") # initialize Friend
+catrina.describe()
 catrina.set_conversation("Why hello there...") # set auto-response
 catrina.talk() # trigger conversation
 ballroom.set_character(catrina) # place friend
@@ -57,7 +57,7 @@ while dead == False:
         if inhabitant is not None:
             inhabitant.talk()
     elif command == "fight":
-        if inhabitamt == None or isinstance(inhabitant, Enemy):
+        if inhabitamt == None or isinstance(inhabitant, Friend):
             print("There is no one here to fight with")
         else:
             print("What will you fight with?")

@@ -9,15 +9,18 @@ class Room():
         
     def set_description(self, room_description):
         self.description = room_description
-        
     def get_description(self):
         return self.descrption
         
     def set_name(self):
         self.name = room_name
-        
     def get_name(self):
         return self.name
+    
+    def set_character(self, new_character):
+        self.character = new_character
+    def get_character(self):
+        return self.character
     
     def describe(self):
         print( self.description )
@@ -38,9 +41,5 @@ class Room():
             print("You can't go that way. You are likely to be eaten by a Grue.")
             return self
     
-    def set_character(character):
-        character.describe = char_description
-        
-    def get_character(char_name):
-        return char_name
+    
         

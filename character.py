@@ -38,10 +38,19 @@ class Enemy(Character):
             print(self.name + " crushes you, puny adventurer")
             return False
     
-    def set_weakness(self, weakness): # set enemy weakness
-        self.weakness = weakness
+    def set_weakness(self, item_weakness): # set enemy weakness
+        self.weakness = item_weakness
+    def get_weakness(self):
+        return self.weakness
+    
+    def steal(self):
+        print("You steal from " + self.name)
         
 class Friend(Character):
     
     def __init__(self, char_name, char_description):
         super().__init__(char_name, char_description) # inherits attributes and methods from Character class
+        self.feeling = None
+        
+    def hug(self):
+        print(self.name + " hugs you back!")
