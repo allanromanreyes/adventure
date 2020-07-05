@@ -37,15 +37,6 @@ catrina.set_conversation("Why hello there...") # set auto-response
 catrina.talk() # trigger conversation
 ballroom.set_character(catrina) # place friend
 
-#place charaters
-from character import Enemy
-dave = Enemy("Dave", "A smelly zombie")
-dave.describe()
-dave.set_weakness("cheese")
-print("What will you fight with?")
-fight_with = input()
-dave.fight(fight_with)
-
 # player location
 current_room = kitchen
 dead = False
